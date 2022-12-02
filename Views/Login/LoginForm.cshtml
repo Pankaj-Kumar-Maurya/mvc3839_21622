@@ -1,0 +1,36 @@
+﻿@model mvc3839_21622.Models.tblemployee
+@{
+    ViewBag.Title = "LoginForm";
+}
+
+<h2>LoginForm</h2>
+@using (Html.BeginForm("LoginForm","Login",FormMethod.Post)) { 
+
+
+<table>
+    <tr>
+        <th>Employee Email</th>
+        <td>@Html.TextBoxFor(x => x.email)</td>
+    </tr>
+    <tr>
+        <th>Password</th>
+        <td>@Html.TextBoxFor(x => x.password)</td>
+    </tr>
+
+    <tr>
+        <th></th>
+        <td><input type="submit" value="Login" /></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            @if(ViewBag.msg != null)
+                {
+                <span style="color:red">@ViewBag.msg</span>
+                }
+            </td>
+    </tr>
+
+</table>
+}

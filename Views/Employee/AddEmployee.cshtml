@@ -1,0 +1,96 @@
+﻿@model mvc3839_21622.Models.TableCollection
+@{
+    ViewBag.Title = "AddEmployee";
+}
+
+<h2>AddEmployee</h2>
+@using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post))
+{
+<table>
+    @Html.HiddenFor(x => x.empid)
+    <tr>
+        <th>Employee Name</th>
+        <td>@Html.TextBoxFor(x => x.name)</td>
+    </tr>
+    <tr>
+        <th>Employee Email</th>
+        <td>@Html.TextBoxFor(x => x.email)</td>
+    </tr>
+    <tr>
+        <th>Password</th>
+        <td>@Html.TextBoxFor(x => x.password)</td>
+    </tr>
+    <tr>
+        <th>Gender</th>
+        <td>
+            @for (var i = 0; i < Model.lstgender.Count; i++)
+            {
+                @Html.RadioButtonFor(x => x.gender, Model.lstgender[i].gid) @Model.lstgender[i].gname
+            }
+
+        </td>
+    </tr>
+    <tr>
+        <th>Hobbies</th>
+        <td>
+            @for (var i = 0; i < Model.lsthobby1.Count; i++)
+            {
+                @Html.CheckBoxFor(m=>m.lsthobby1[i].ischecked)
+                @Html.DisplayFor(m=>m.lsthobby1[i].hname)
+                @Html.HiddenFor(m=>m.lsthobby1[i].hname)
+            }
+
+        </td>
+    </tr>
+
+    <tr>
+        <th>Country</th>
+        <td>@Html.DropDownListFor(x => x.country, new SelectList(Model.lstcountry, "cid", "cname"), "--Select Country--", new { onchange = "BindState()" })</td>
+    </tr>
+    <tr>
+
+    <tr>
+        <th>State</th>
+        <td>@Html.DropDownListFor(x => x.state, new SelectList(Model.lststate, "sid", "sname"), "--Select State--")</td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><input type="submit" value="@ViewBag.BT" /></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            @if (ViewBag.msg != null)
+            {
+                <span style="color:red">@ViewBag.msg</span>
+            }
+        </td>
+    </tr>
+
+</table>
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    function BindState()
+    {
+        $.ajax({
+            url: '../Employee/GetState',
+            type: 'post',
+            data: { A: $("#country").val() },
+            success: function (data) {
+                $("#state").empty();
+                    $("#state").append($('<option></option>').html("--Select State").val(0));
+                for (var i = 0; i < data.length; i++) {
+                    $("#state").append($('<option></option>').html(data[i].sname).val(data[i].sid));
+                }
+            },
+            error: function () {
+                alert('State not bind.');
+            }
+
+
+        });
+    }
+</script>

@@ -1,0 +1,37 @@
+﻿@model mvc3839_21622.Models.tblUser
+@{
+    ViewBag.Title = "AddUser";
+}
+<h2>AddUser</h2>
+@using (Html.BeginForm("AddUser", "User", FormMethod.Post,new {enctype="multipart/form-data" }))
+{
+<table>
+    @Html.HiddenFor(x=>x.userid)
+    @Html.HiddenFor(x=>x.img)
+    <tr>
+        <th>Name</th>
+        <td>@Html.TextBoxFor(x => x.name)</td>
+    </tr>
+    <tr>
+        <th>Age</th>
+        <td>@Html.TextBoxFor(x => x.age)</td>
+    </tr>
+    <tr>
+        <th style="vertical-align:top;">Image</th>
+        <td><input type="file"  name="file"/>
+        @if(ViewBag.imgg!=null)
+                {
+                    <img src="@Url.Content(ViewBag.imgg)" style="width:100px; height:110px;" />
+                }
+
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td><input type="submit" value="@ViewBag.BT" /></td>
+    </tr>
+</table>
+
+
+}
+

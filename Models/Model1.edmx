@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="db3839_21622Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblcountry">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblemployee">
+          <Key>
+            <PropertyRef Name="empid" />
+          </Key>
+          <Property Name="empid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="gender" Type="int" />
+          <Property Name="country" Type="int" />
+          <Property Name="state" Type="int" />
+          <Property Name="hobbies" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblgender">
+          <Key>
+            <PropertyRef Name="gid" />
+          </Key>
+          <Property Name="gid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblhobby">
+          <Key>
+            <PropertyRef Name="hid" />
+          </Key>
+          <Property Name="hid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblstate">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cid" Type="int" />
+          <Property Name="sname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="age" Type="int" />
+          <Property Name="img" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="db3839_21622ModelStoreContainer">
+          <EntitySet Name="tblcountry" EntityType="Self.tblcountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblemployee" EntityType="Self.tblemployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblgender" EntityType="Self.tblgender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblhobby" EntityType="Self.tblhobby" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblstate" EntityType="Self.tblstate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db3839_21622Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblcountry">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblemployee">
+          <Key>
+            <PropertyRef Name="empid" />
+          </Key>
+          <Property Name="empid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="Int32" />
+          <Property Name="country" Type="Int32" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="hobbies" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblgender">
+          <Key>
+            <PropertyRef Name="gid" />
+          </Key>
+          <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblstate">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cid" Type="Int32" />
+          <Property Name="sname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="DatabaseContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblcountries" EntityType="Self.tblcountry" />
+          <EntitySet Name="tblemployees" EntityType="Self.tblemployee" />
+          <EntitySet Name="tblgenders" EntityType="Self.tblgender" />
+          <EntitySet Name="tblstates" EntityType="Self.tblstate" />
+          <EntitySet Name="tblhobbies" EntityType="db3839_21622Model.tblhobby" />
+          <EntitySet Name="tblUsers" EntityType="db3839_21622Model.tblUser" />
+        </EntityContainer>
+        <EntityType Name="tblhobby">
+          <Key>
+            <PropertyRef Name="hid" />
+          </Key>
+          <Property Name="hid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db3839_21622ModelStoreContainer" CdmEntityContainer="DatabaseContext">
+          <EntitySetMapping Name="tblcountries">
+            <EntityTypeMapping TypeName="db3839_21622Model.tblcountry">
+              <MappingFragment StoreEntitySet="tblcountry">
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblemployees">
+            <EntityTypeMapping TypeName="db3839_21622Model.tblemployee">
+              <MappingFragment StoreEntitySet="tblemployee">
+                <ScalarProperty Name="hobbies" ColumnName="hobbies" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="empid" ColumnName="empid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="country" ColumnName="country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblgenders">
+            <EntityTypeMapping TypeName="db3839_21622Model.tblgender">
+              <MappingFragment StoreEntitySet="tblgender">
+                <ScalarProperty Name="gid" ColumnName="gid" />
+                <ScalarProperty Name="gname" ColumnName="gname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblstates">
+            <EntityTypeMapping TypeName="db3839_21622Model.tblstate">
+              <MappingFragment StoreEntitySet="tblstate">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="sname" ColumnName="sname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblhobbies">
+            <EntityTypeMapping TypeName="db3839_21622Model.tblhobby">
+              <MappingFragment StoreEntitySet="tblhobby">
+                <ScalarProperty Name="hname" ColumnName="hname" />
+                <ScalarProperty Name="hid" ColumnName="hid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="db3839_21622Model.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
